@@ -24,18 +24,44 @@ the categories together cover the full scope (collectively exhaustive).
 
 ## Installation
 
-### Globally (available in every project)
+### Global via Git symlink (recommended — keeps Git as source of truth)
 
 ```bash
-# After cloning this repository:
-ln -s /path/to/mece-skill ~/.config/opencode/skills/mece
+# Clone this repository to a fixed location
+git clone git@github.com:petervirtech/mece-skill.git ~/dev/mece-skill
+cd ~/dev/mece-skill
+
+# Create the global OpenCode skills directory
+mkdir -p ~/.config/opencode/skills
+
+# Symlink (use -sfn to replace existing)
+ln -sfn ~/dev/mece-skill/.opencode/skills/mece \
+  ~/.config/opencode/skills/mece
 ```
+
+The symlink lets OpenCode discover the skill while Git remains the
+single source of truth.  To update:
+
+```bash
+cd ~/dev/mece-skill
+git pull
+```
+
+Changes appear globally after the next OpenCode restart.
+
+> **One skill per symlink** is safest when you also use third-party
+> skills.  For team-wide distribution, everyone clones the repo and
+> symlinks locally.
 
 ### Per-project (only in one project)
 
 ```bash
 cp -r /path/to/mece-skill/.opencode/skills/mece ./.opencode/skills/mece
 ```
+
+A project-local copy is independent of Git — changes do not propagate
+to other projects and cannot be pushed.  Use this only for temporary
+experimentation.  Prefer symlinks for any skill you intend to maintain.
 
 ### Via opencode.jsonc
 
@@ -62,6 +88,28 @@ Or as an HTTP catalog:
 ```
 
 ### Verify installation
+
+### Team-wide distribution
+
+For a team that wants a shared set of skills:
+
+```bash
+# On each machine:
+git clone git@github.com:<org>/platform-skills.git ~/dev/platform-skills
+```
+
+Then symlink individual skills:
+
+```bash
+ln -sfn ~/dev/platform-skills/skills/cloudstack-troubleshooting \
+  ~/.config/opencode/skills/cloudstack-troubleshooting
+ln -sfn ~/dev/platform-skills/skills/k8s-platform-standards \
+  ~/.config/opencode/skills/k8s-platform-standards
+```
+
+The repository becomes the single source of truth.  Improvements go
+through normal Git PRs; after merge and `git pull` everyone sees the
+updated skill.
 
 Restart OpenCode (or your agent).  The skill should appear in the
 available skills list with:

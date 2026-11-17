@@ -7,7 +7,9 @@ description: >
   create an issue tree or logic tree, translate a feature into user
   stories, build a backlog, perform root-cause analysis, validate that
   categories do not overlap and cover the full scope, or create a
-  prioritised product roadmap.
+  prioritised product roadmap. Installation: symlink this repo into
+  ~/.config/opencode/skills/mece (global) or .opencode/skills/mece
+  (project). See README.md for full instructions.
 ---
 
 # MECE Decomposition
