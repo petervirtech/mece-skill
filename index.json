@@ -1,0 +1,11 @@
+{
+  "skills": [
+    {
+      "name": "mece",
+      "version": "1",
+      "files": [
+        "mece/SKILL.md"
+      ]
+    }
+  ]
+}
