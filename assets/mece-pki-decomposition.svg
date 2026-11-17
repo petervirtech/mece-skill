@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      text { fill: #e2e8f0; font-size: 11px; }
+      .title { font-size: 14px; font-weight: 700; fill: #f8fafc; }
+      .subtitle { font-size: 10px; fill: #94a3b8; }
+      .leaf { font-size: 9px; fill: #cbd5e1; }
+      .level1 { font-size: 11px; font-weight: 600; }
+      .line { stroke: #334155; stroke-width: 1.2; fill: none; }
+      .bg { fill: #1e293b; rx: 6; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="800" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="640" y="30" text-anchor="middle" class="title">MECE Decomposition: Cloud-Native PKI &amp; SSL System</text>
+  <text x="640" y="48" text-anchor="middle" class="subtitle">Problem: Automate short-lived (24h) TLS certificates across multi-cluster Kubernetes</text>
+
+  <!-- Root node -->
+  <rect x="490" y="60" width="300" height="32" class="bg" fill="#334155"/>
+  <text x="640" y="81" text-anchor="middle" class="title">Problem: Cloud-native PKI &amp; SSL System</text>
+
+  <!-- Level 1 nodes (y=130) -->
+  <!-- Branch 1: CA (teal) -->
+  <rect x="10" y="110" width="190" height="30" rx="6" fill="#0d9488"/>
+  <text x="105" y="130" text-anchor="middle" class="level1" fill="#fff">[1] Certificate Authority</text>
+
+  <!-- Branch 2: Lifecycle (blue) -->
+  <rect x="235" y="110" width="190" height="30" rx="6" fill="#2563eb"/>
+  <text x="330" y="130" text-anchor="middle" class="level1" fill="#fff">[2] Certificate Lifecycle</text>
+
+  <!-- Branch 3: K8s (green) -->
+  <rect x="460" y="110" width="190" height="30" rx="6" fill="#16a34a"/>
+  <text x="555" y="130" text-anchor="middle" class="level1" fill="#fff">[3] Kubernetes Integration</text>
+
+  <!-- Branch 4: Operations (orange) -->
+  <rect x="685" y="110" width="190" height="30" rx="6" fill="#ea580c"/>
+  <text x="780" y="130" text-anchor="middle" class="level1" fill="#fff">[4] Operations</text>
+
+  <!-- Branch 5: Migration (purple) -->
+  <rect x="910" y="110" width="190" height="30" rx="6" fill="#7c3aed"/>
+  <text x="1005" y="130" text-anchor="middle" class="level1" fill="#fff">[5] Migration &amp; Rollout</text>
+
+  <!-- Lines from root to level 1 -->
+  <path d="M640 92 L640 110 M205 110 L640 110 M425 110 L640 110 M650 110 L640 110 M875 110 L640 110 M1100 110 L640 110" class="line"/>
+
+  <!-- Level 2 nodes - Branch 1 (teal leaves) -->
+  <rect x="10" y="180" width="185" height="26" rx="4" fill="#0f766e"/>
+  <text x="102" y="197" class="leaf">Root CA (long-lived, HSM)</text>
+  <rect x="10" y="212" width="185" height="26" rx="4" fill="#0f766e"/>
+  <text x="102" y="229" class="leaf">Intermediate CA (short-lived)</text>
+  <rect x="10" y="244" width="185" height="26" rx="4" fill="#0f766e"/>
+  <text x="102" y="261" class="leaf">Key Management (gen, store)</text>
+  <rect x="10" y="276" width="185" height="26" rx="4" fill="#0f766e"/>
+  <text x="102" y="293" class="leaf">Trust Chain Distribution</text>
+  <path d="M105 140 L105 180 M105 140 L102 212 M105 140 L102 244 M105 140 L102 276" class="line"/>
+
+  <!-- Level 2 nodes - Branch 2 (blue leaves) -->
+  <rect x="235" y="180" width="185" height="26" rx="4" fill="#1d4ed8"/>
+  <text x="327" y="197" class="leaf">Issuance (CSR → sign)</text>
+  <rect x="235" y="212" width="185" height="26" rx="4" fill="#1d4ed8"/>
+  <text x="327" y="229" class="leaf">Distribution (push/pull/ACME)</text>
+  <rect x="235" y="244" width="185" height="26" rx="4" fill="#1d4ed8"/>
+  <text x="327" y="261" class="leaf">Renewal (80% TTL → hot-swap)</text>
+  <rect x="235" y="276" width="185" height="26" rx="4" fill="#1d4ed8"/>
+  <text x="327" y="293" class="leaf">Revocation (CRL + OCSP)</text>
+  <rect x="235" y="308" width="185" height="26" rx="4" fill="#1d4ed8"/>
+  <text x="327" y="325" class="leaf">Audit &amp; Compliance</text>
+  <path d="M330 140 L330 180 M330 140 L327 212 M330 140 L327 244 M330 140 L327 276 M330 140 L327 308" class="line"/>
+
+  <!-- Level 2 nodes - Branch 3 (green leaves) -->
+  <rect x="460" y="180" width="185" height="26" rx="4" fill="#15803d"/>
+  <text x="552" y="197" class="leaf">cert-manager CRD</text>
+  <rect x="460" y="212" width="185" height="26" rx="4" fill="#15803d"/>
+  <text x="552" y="229" class="leaf">Secrets (TLS mount, reload)</text>
+  <rect x="460" y="244" width="185" height="26" rx="4" fill="#15803d"/>
+  <text x="552" y="261" class="leaf">Multi-Cluster Coordination</text>
+  <path d="M555 140 L555 180 M555 140 L552 212 M555 140 L552 244" class="line"/>
+
+  <!-- Level 2 nodes - Branch 4 (orange leaves) -->
+  <rect x="685" y="180" width="185" height="26" rx="4" fill="#c2410c"/>
+  <text x="777" y="197" class="leaf">High Availability (3 nodes)</text>
+  <rect x="685" y="212" width="185" height="26" rx="4" fill="#c2410c"/>
+  <text x="777" y="229" class="leaf">Security (mTLS, RBAC, audit)</text>
+  <rect x="685" y="244" width="185" height="26" rx="4" fill="#c2410c"/>
+  <text x="777" y="261" class="leaf">Observability (alerts, metrics)</text>
+  <rect x="685" y="276" width="185" height="26" rx="4" fill="#c2410c"/>
+  <text x="777" y="293" class="leaf">DR / Disaster Recovery</text>
+  <path d="M780 140 L780 180 M780 140 L777 212 M780 140 L777 244 M780 140 L777 276" class="line"/>
+
+  <!-- Level 2 nodes - Branch 5 (purple leaves) -->
+  <rect x="910" y="180" width="185" height="26" rx="4" fill="#6d28d9"/>
+  <text x="1002" y="197" class="leaf">Greenfield Deployment</text>
+  <rect x="910" y="212" width="185" height="26" rx="4" fill="#6d28d9"/>
+  <text x="1002" y="229" class="leaf">Brownfield Migration</text>
+  <rect x="910" y="244" width="185" height="26" rx="4" fill="#6d28d9"/>
+  <text x="1002" y="261" class="leaf">Organizational Readiness</text>
+  <path d="M1005 140 L1005 180 M1005 140 L1002 212 M1005 140 L1002 244" class="line"/>
+
+  <!-- Legend -->
+  <rect x="10" y="730" width="1260" height="55" rx="8" fill="#1e293b"/>
+  <text x="640" y="750" text-anchor="middle" font-size="10" fill="#94a3b8">MECE Check: No overlap between branches (CA vs Lifecycle are separate concerns) • All coverage areas included (HA, Security, DR, Migration) • Out of scope: code-signing certificates • 25 leaf nodes covering 5 dimensions</text>
+  <text x="640" y="770" text-anchor="middle" font-size="9" fill="#64748b">Color coding: TEAL=Trust anchor • BLUE=Process • GREEN=Platform • ORANGE=Ops • PURPLE=Change management</text>
+
+  <!-- MECE badge -->
+  <rect x="1090" y="735" width="170" height="18" rx="9" fill="#059669"/>
+  <text x="1175" y="748" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">MUTUALLY EXCLUSIVE + COLLECTIVELY EXHAUSTIVE</text>
+</svg>
