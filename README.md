@@ -1,20 +1,67 @@
-# mece-skill
+# MECE Decomposition Skill
 
-Een herbruikbare skill om problemen volgens **MECE** te structureren en features te vertalen naar complete, niet-overlappende user stories.
+A reusable OpenCode skill to decompose problems, analyses, product
+features, and requirements into **mutually exclusive** and **collectively
+exhaustive** (MECE) structures, including actionable user stories.
 
-MECE staat voor **Mutually Exclusive, Collectively Exhaustive** (wederzijds uitsluitend en gezamenlijk volledig). De categorieën overlappen niet en dekken samen de afgesproken scope. Dit principe wordt vaak gebruikt voor probleemoplossing, analyse en structurering en is verbonden aan het Minto Pyramid Principle.
+MECE is a structured problem-solving principle widely used in strategy
+consulting (McKinsey, Barbara Minto) and product management.  It ensures
+that categories do not overlap (mutually exclusive) and that the
+categories together cover the full scope (collectively exhaustive).
 
-## Inhoud
+## Installation
 
-- [`SKILL.md`](SKILL.md) bevat de instructies, werkwijze, outputstructuur en kwaliteitscheck.
-- De skill werkt voor zowel probleem- en oorzaakbomen als feature decomposition en user stories.
+### Global installation (available in every project)
 
-## Gebruik
+```bash
+# Clone or symlink this repository into your global skills directory
+ln -s /path/to/mece-skill ~/.config/opencode/skills/mece
+```
 
-Laad `SKILL.md` als skill in je agentomgeving en geef daarna bijvoorbeeld:
+### Project installation (available in this project only)
 
-> Deel het probleem “onboarding duurt te lang” MECE op. Benoem aannames, controleer overlap en maak de uitkomst uitvoerbaar.
+```bash
+# Copy or symlink into the project
+cp -r .opencode/skills/mece ./.opencode/skills/mece
+```
 
-Of:
+The skill will be auto-discovered by OpenCode on next restart.
 
-> Vertaal deze feature naar een MECE-set user stories met Given/When/Then-acceptatiecriteria en dek ook lege, foutieve en herstel-scenario's af.
+### Cross-platform compatibility
+
+This skill follows the [Agent Skills](https://agentskills.io) open
+standard, so it also works in:
+
+- Claude Code
+- Cursor
+- VS Code (with appropriate extensions)
+- Gemini CLI
+- OpenAI Codex
+
+## Usage
+
+Ask the agent to apply MECE decomposition:
+
+> Break down the problem "user onboarding takes too long" using MECE.
+> Name assumptions, check for overlaps, and make the result actionable.
+
+> Translate this feature into a MECE set of user stories with
+> Given/When/Then acceptance criteria, covering happy paths, error
+> paths, and edge cases.
+
+> I need to structure the root-cause analysis for rising churn.  Use
+> MECE.
+
+## Example triggers
+
+| Prompt snippet | What the skill does |
+|----------------|---------------------|
+| "Break down X using MECE" | Creates a problem tree with the five splitting lenses |
+| "Translate this feature to user stories" | Creates MECE user stories with Given/When/Then criteria |
+| "Structure the backlog for X" | Creates a prioritized, non-overlapping backlog |
+| "Root-cause analysis for X" | Builds an issue tree with MECE-checked branches |
+| "Validate this structure for gaps or overlaps" | Runs the MECE quality checklist |
+
+## License
+
+Apache License 2.0 — see [LICENSE](../../LICENSE).
