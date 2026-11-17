@@ -1,42 +1,76 @@
 # MECE Decomposition Skill
 
-A reusable OpenCode skill to decompose problems, analyses, product
-features, and requirements into **mutually exclusive** and **collectively
-exhaustive** (MECE) structures, including actionable user stories.
+A reusable Agent Skills-compliant skill to decompose problems,
+analyses, product features, and requirements into **mutually
+exclusive** and **collectively exhaustive** (MECE) structures,
+including actionable user stories.
 
 MECE is a structured problem-solving principle widely used in strategy
-consulting (McKinsey, Barbara Minto) and product management.  It ensures
-that categories do not overlap (mutually exclusive) and that the
-categories together cover the full scope (collectively exhaustive).
+consulting (McKinsey, Barbara Minto) and product management.  It
+ensures that categories do not overlap (mutually exclusive) and that
+the categories together cover the full scope (collectively exhaustive).
+
+## Features
+
+- **Five splitting lenses** — formula, process, components,
+  stakeholders, opposites — with examples.
+- **End-to-end workflow** — clarify, decompose, check, act, surface
+  uncertainty.
+- **Feature → user stories** — full Given/When/Then acceptance
+  criteria, covering happy paths, error paths, and edge cases.
+- **MECE quality checklist** — runnable before every delivery.
+- **Language-agnostic** — works in any language; the skill content is
+  English but any language of interaction is supported.
 
 ## Installation
 
-### Global installation (available in every project)
+### Globally (available in every project)
 
 ```bash
-# Clone or symlink this repository into your global skills directory
+# After cloning this repository:
 ln -s /path/to/mece-skill ~/.config/opencode/skills/mece
 ```
 
-### Project installation (available in this project only)
+### Per-project (only in one project)
 
 ```bash
-# Copy or symlink into the project
-cp -r .opencode/skills/mece ./.opencode/skills/mece
+cp -r /path/to/mece-skill/.opencode/skills/mece ./.opencode/skills/mece
 ```
 
-The skill will be auto-discovered by OpenCode on next restart.
+### Via opencode.jsonc
 
-### Cross-platform compatibility
+Add this repository (local or remote) to your skills list:
 
-This skill follows the [Agent Skills](https://agentskills.io) open
-standard, so it also works in:
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": [
+    "/path/to/mece-skill"
+  ]
+}
+```
 
-- Claude Code
-- Cursor
-- VS Code (with appropriate extensions)
-- Gemini CLI
-- OpenAI Codex
+Or as an HTTP catalog:
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": [
+    "https://raw.githubusercontent.com/petervirtech/mece-skill/main/.opencode/skills/"
+  ]
+}
+```
+
+### Verify installation
+
+Restart OpenCode (or your agent).  The skill should appear in the
+available skills list with:
+
+- **ID:** `mece`
+- **Name:** MECE decomposition
+- **Description:** "Decompose problems, analyses, product features,
+  and requirements into mutually exclusive and collectively exhaustive
+  (MECE) structures …"
 
 ## Usage
 
@@ -52,16 +86,47 @@ Ask the agent to apply MECE decomposition:
 > I need to structure the root-cause analysis for rising churn.  Use
 > MECE.
 
+> Validate this backlog structure for gaps or overlaps.
+
 ## Example triggers
 
 | Prompt snippet | What the skill does |
 |----------------|---------------------|
 | "Break down X using MECE" | Creates a problem tree with the five splitting lenses |
 | "Translate this feature to user stories" | Creates MECE user stories with Given/When/Then criteria |
-| "Structure the backlog for X" | Creates a prioritized, non-overlapping backlog |
+| "Structure the backlog for X" | Creates a prioritised, non-overlapping backlog |
 | "Root-cause analysis for X" | Builds an issue tree with MECE-checked branches |
 | "Validate this structure for gaps or overlaps" | Runs the MECE quality checklist |
+| "Create a product roadmap for X" | Decomposes features MECE-style with priorities |
+
+## Cross-platform compatibility
+
+This skill follows the [Agent Skills](https://agentskills.io) open
+standard, so it works in:
+
+- OpenCode
+- Claude Code
+- Cursor
+- VS Code (with GitHub Copilot)
+- Gemini CLI
+- OpenAI Codex
+- Goose (Block)
+- Amp, Factory, Letta
+
+## Directory structure
+
+```
+mece-skill/
+├── .opencode/
+│   └── skills/
+│       └── mece/
+│           └── SKILL.md          ← required: metadata + instructions
+├── index.json                    ← optional: HTTP catalog manifest
+├── install.sh                    ← optional: one-line installer
+├── README.md
+└── LICENSE
+```
 
 ## License
 
-Apache License 2.0 — see [LICENSE](../../LICENSE).
+Apache License 2.0 — see [LICENSE](LICENSE).
